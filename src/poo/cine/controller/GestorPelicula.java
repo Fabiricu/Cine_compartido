@@ -28,7 +28,7 @@ import poo.cine.dao.PaisesDaoHibernateImpl;
 import poo.cine.dao.PeliculasDao;
 import poo.cine.dao.PeliculasDaoHibernateImpl;
 import poo.cine.ui.PantallaAdministracionPelicula;
-import poo.cine.controller.GestorActor;
+
 
 /**
  *
@@ -42,7 +42,7 @@ public class GestorPelicula {
     private final CalificacionesDao calificacionesDao;
     private final PaisesDao paisesDao;
     private final PeliculasDao peliculasDao;
-    private final GestorActor gactor;
+    
     
 
     public GestorPelicula(SessionFactory sessionFactory) {
@@ -56,7 +56,7 @@ public class GestorPelicula {
         this.calificacionesDao = new CalificacionesDaoHibernateImpl(sessionFactory);
         this.paisesDao = new PaisesDaoHibernateImpl(sessionFactory);
         this.peliculasDao = new PeliculasDaoHibernateImpl(sessionFactory);
-        this.gactor = new GestorActor(sessionFactory);
+       
     }
     
     public void run () {
