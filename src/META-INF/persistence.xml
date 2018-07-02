@@ -3,6 +3,7 @@
   <persistence-unit name="poo-01-cinePU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>poo.cine.dao.Actor</class>
+    <class>poo.cine.controller.GestorPersonaje</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.18.67.225:3306/poocine?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="meschoyez"/>
