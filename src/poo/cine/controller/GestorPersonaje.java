@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import poo.cine.Personaje;
 import poo.cine.dao.PersonajeDao;
 import poo.cine.dao.PersonajeDaoHibernateImpl;
-import poo.cine.ui.PantallaAdministracionPersonajes;
+import poo.cine.ui.PantallaGestorPersonajes;
 
 /**
  *
@@ -35,14 +35,14 @@ public class GestorPersonaje {
     public GestorPersonaje (SessionFactory sessionFactory) {
                
         // creamos las instancias de los objetos de acceso a datos
-        this.personajeDao = new PersonajeDaoHibernateImpl(sessionFactory);
+        this.personajeDao = (PersonajeDao) new PersonajeDaoHibernateImpl(sessionFactory);
 
     }
     
     public void run () {
                         
         // creamos una instancia del formulario y lo mostramos
-        PantallaAdministracionPersonajes panelpersonajes = new PantallaAdministracionPersonajes(this);
+        PantallaGestorPersonajes panelpersonajes = new PantallaGestorPersonajes(this);
         panelpersonajes.setVisible(true);
     }
     
