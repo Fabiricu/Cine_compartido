@@ -6,7 +6,7 @@
 package poo.cine.dao;
 
 import poo.cine.Actor;
-
+import java.util.List;
 /**
  *
  * @author Alumno
@@ -16,4 +16,6 @@ public interface ActorDao {
     public Actor buscarPorNombre (String nombre);
     
     public void guardar (Actor actor);
+    
+    public List<Actor> obtenerTodos();
 }

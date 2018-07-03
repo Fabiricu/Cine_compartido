@@ -5,6 +5,8 @@
  */
 package poo.cine.ui;
 
+import java.util.List;
+import poo.cine.Actor;
 import poo.cine.controller.GestorBusquedaActor;
 /**
  *
@@ -16,9 +18,11 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
      * Creates new form PantallaBusquedaActores
      */
     private final GestorBusquedaActor gestor;
+    private final List<Actor> actores;
             
-    public PantallaBusquedaActores(GestorBusquedaActor gestor) {
-       this.gestor =gestor;
+    public PantallaBusquedaActores(GestorBusquedaActor gestor, List<Actor> actores) {
+        this.actores = actores;
+        this.gestor =gestor;
         
         initComponents();
     }
@@ -34,10 +38,10 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         campoBusqueda = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        resultados = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,16 +53,10 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
             }
         });
 
-        resultados.setColumns(20);
-        resultados.setRows(5);
-        jScrollPane1.setViewportView(resultados);
-        resultados.getAccessibleContext().setAccessibleName("resultados");
-        resultados.getAccessibleContext().setAccessibleParent(resultados);
-
         jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonAceptar(evt);
             }
         });
 
@@ -68,6 +66,9 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
                 CargarNuevoActor(evt);
             }
         });
+
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,13 +83,14 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(53, Short.MAX_VALUE))))
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(174, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,9 +99,9 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -115,9 +117,9 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoBusquedaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonAceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptar
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonAceptar
 
     private void CargarNuevoActor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarNuevoActor
         // TODO add your handling code here:
@@ -168,7 +170,7 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JTextArea resultados;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

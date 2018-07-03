@@ -5,7 +5,9 @@
  */
 package poo.cine.controller;
 
+import java.util.List;
 import org.hibernate.SessionFactory;
+import poo.cine.Actor;
 import poo.cine.dao.ActorDao;
 import poo.cine.dao.ActorDaoHibernateImpl;
 import poo.cine.ui.PantallaBusquedaActores;
@@ -23,7 +25,7 @@ public class GestorBusquedaActor {
     
  private final ActorDao actorDao;
  private final GestorActor gactor;
- 
+  
  public GestorBusquedaActor (SessionFactory sessionFactory){
      
   this.actorDao = new ActorDaoHibernateImpl(sessionFactory);
@@ -33,12 +35,13 @@ public class GestorBusquedaActor {
   public void run () {
                         
         // creamos una instancia del formulario y lo mostramos
-        PantallaBusquedaActores pbactores = new PantallaBusquedaActores(this);
+        List<Actor> actores = actorDao.obtenerTodos();
+        PantallaBusquedaActores pbactores = new PantallaBusquedaActores(this,actores);
         pbactores.setVisible(true);
     }
  
   public void gestorActor(){
-  
+      
       gactor.run();
   }
   
@@ -58,7 +61,24 @@ public class GestorBusquedaActor {
         }
     }
    */ 
-
+  
+   /*
+    private List<Actor> resultado;
+    private void campoBuscadorReleased(){
+    resultado = null;
+    String cadenaResultados = "";
+            
+    
+        for(int=0;i <acotres.size();i++){
+            if(actores.get(i).empiezaPor(campoBusqueda.getText())){
+              cadenaResultados += listado.get(i).toString + "/n/n";
+             }
+    
+         resultado.setText(cadenaResultados):
+        }
+    }
+   */ 
+ /*
     private boolean empiezaPor(String apellido, String campo){
         if(campo.isEmpty()|| campo.length()<apellido.length()){
         return false;
@@ -70,5 +90,5 @@ public class GestorBusquedaActor {
         }  
         return true;
     }
-
+ */
 }
