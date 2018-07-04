@@ -39,62 +39,76 @@ public class PantallaGestorPersonajes extends javax.swing.JPanel implements java
     private void initComponents() {
 
         jFileChooser1 = new javax.swing.JFileChooser();
-        jTextField1 = new javax.swing.JTextField();
+        entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("poo-01-cinePU").createEntityManager();
+        txtNombreEnPelicula = new javax.swing.JTextField();
         label1 = new java.awt.Label();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        SelActor = new javax.swing.JComboBox<>();
         label2 = new java.awt.Label();
         jPanel1 = new javax.swing.JPanel();
-        button3 = new java.awt.Button();
-        button1 = new java.awt.Button();
-        button2 = new java.awt.Button();
+        btnCargarNuevoActor = new java.awt.Button();
+        btnGuardar = new java.awt.Button();
+        btnSalir = new java.awt.Button();
         label3 = new java.awt.Label();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        SelRol = new javax.swing.JComboBox<>();
 
+        setVerifyInputWhenFocusTarget(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        txtNombreEnPelicula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreEnPeliculaFocusLost(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
+        txtNombreEnPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEnPeliculaActionPerformed(evt);
+            }
+        });
+        txtNombreEnPelicula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreEnPeliculaKeyPressed(evt);
+            }
+        });
+        add(txtNombreEnPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
+        txtNombreEnPelicula.getAccessibleContext().setAccessibleParent(txtNombreEnPelicula);
 
         label1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         label1.setText("Nombre en Película");
         add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 20));
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        SelActor.setModel(new javax.swing.DefaultComboBoxModel(actor.toArray()));
+        SelActor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                SelActorActionPerformed(evt);
             }
         });
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 180, -1));
+        add(SelActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 180, -1));
 
         label2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         label2.setText("Actor");
         add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        button3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        button3.setLabel("Cargar Nuevo Actor");
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        btnCargarNuevoActor.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        btnCargarNuevoActor.setLabel("Cargar Nuevo Actor");
+        btnCargarNuevoActor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3ActionPerformed(evt);
+                btnCargarNuevoActorActionPerformed(evt);
             }
         });
-        jPanel1.add(button3);
+        jPanel1.add(btnCargarNuevoActor);
 
-        button1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        button1.setLabel("Guardar");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        btnGuardar.setLabel("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(button1);
+        jPanel1.add(btnGuardar);
 
-        button2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        button2.setLabel("Salir");
-        jPanel1.add(button2);
+        btnSalir.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        btnSalir.setLabel("Salir");
+        jPanel1.add(btnSalir);
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 360, 40));
 
@@ -102,37 +116,47 @@ public class PantallaGestorPersonajes extends javax.swing.JPanel implements java
         label3.setText("Rol");
         add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
 
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 180, -1));
+        SelRol.setModel(new javax.swing.DefaultComboBoxModel(rol.toArray()));
+        add(SelRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 180, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void SelActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelActorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_SelActorActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNombreEnPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEnPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNombreEnPeliculaActionPerformed
 
-    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+    private void btnCargarNuevoActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarNuevoActorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button3ActionPerformed
+    }//GEN-LAST:event_btnCargarNuevoActorActionPerformed
+
+    private void txtNombreEnPeliculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreEnPeliculaFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEnPeliculaFocusLost
+
+    private void txtNombreEnPeliculaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEnPeliculaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEnPeliculaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private java.awt.Button button2;
-    private java.awt.Button button3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> SelActor;
+    private javax.swing.JComboBox<String> SelRol;
+    private java.awt.Button btnCargarNuevoActor;
+    private java.awt.Button btnGuardar;
+    private java.awt.Button btnSalir;
+    private javax.persistence.EntityManager entityManager1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
+    private javax.swing.JTextField txtNombreEnPelicula;
     // End of variables declaration//GEN-END:variables
 }
