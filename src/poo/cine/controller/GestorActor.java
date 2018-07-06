@@ -57,19 +57,7 @@ public class GestorActor {
         PantallaAdministracionActores2 panelactores = new PantallaAdministracionActores2(this);
         panelactores.setVisible(true);
     }
-    
-    /*public List<Personaje> obtenerElenco () {
-        // mockup del resultado de la llamada al caso de uso "Registrar Elenco"
-        Sexo masculino = new Sexo("Masculino");
-        Actor ricardo = new Actor(false, "Darín", "Ricardo", masculino);
-        Rol protagonista = new Rol("Protagonista");
-        
-        List<Personaje> personajes = new ArrayList<>();                
-        personajes.add(new Personaje("Bombita", ricardo, protagonista));
-        
-        return personajes;
-    }
-*/
+
     public Actor buscarActorPorNombre(String nombre) {
         return actorDao.buscarPorNombre(nombre);
     }

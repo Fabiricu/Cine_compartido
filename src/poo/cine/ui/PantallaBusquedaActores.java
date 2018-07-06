@@ -6,6 +6,7 @@
 package poo.cine.ui;
 
 import java.util.List;
+import java.util.ArrayList;
 import poo.cine.Actor;
 import poo.cine.controller.GestorBusquedaActor;
 /**
@@ -19,11 +20,12 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
      */
     private final GestorBusquedaActor gestor;
     private final List<Actor> actores;
+    private ArrayList<Actor> resultadobusqueda; 
             
     public PantallaBusquedaActores(GestorBusquedaActor gestor, List<Actor> actores) {
         this.actores = actores;
         this.gestor =gestor;
-        
+        resultadobusqueda = new ArrayList<Actor>();
         initComponents();
     }
 
@@ -52,6 +54,11 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
                 campoBusquedaActionPerformed(evt);
             }
         });
+        campoBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoBusquedaKeyReleased(evt);
+            }
+        });
 
         jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +74,7 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
             }
         });
 
+        jList1.setModel(new javax.swing.DefaultComboBoxModel(resultadobusqueda.toArray()));
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jList1);
 
@@ -126,6 +134,17 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
         gestor.gestorActor();
     }//GEN-LAST:event_CargarNuevoActor
 
+    private void campoBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoBusquedaKeyReleased
+    
+        resultadobusqueda.clear();
+     
+        for(Actor i: actores){
+            if(gestor.empiezaPor(i.getApellido(), campoBusqueda.getText())){
+              resultadobusqueda.add(i);
+             }
+        }
+         }//GEN-LAST:event_campoBusquedaKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -165,6 +184,64 @@ public class PantallaBusquedaActores extends javax.swing.JFrame {
         });
     }
 
+        
+    /*public List<Personaje> obtenerElenco () {
+        // mockup del resultado de la llamada al caso de uso "Registrar Elenco"
+        Sexo masculino = new Sexo("Masculino");
+        Actor ricardo = new Actor(false, "Darín", "Ricardo", masculino);
+        Rol protagonista = new Rol("Protagonista");
+        
+        List<Personaje> personajes = new ArrayList<>();                
+        personajes.add(new Personaje("Bombita", ricardo, protagonista));
+        
+        return personajes;
+    }
+*/
+ 
+    
+    /*
+    private void campoBuscadorReleased(){
+        resultado.setText("");
+    String cadenaResultados = "";
+            
+    
+        for(int=0;i <listado.size();i++){
+            if(listado.get(i).empiezaPor(campoBusqueda.getText())){
+              cadenaResultados += listado.get(i).toString + "/n/n";
+             }
+    
+         resultado.setText(cadenaResultados):
+        }
+    }
+   */ 
+  
+   /*
+    private List<Actor> resultado;
+    private void campoBuscadorReleased(){
+    resultado = null;
+    String cadenaResultados = "";
+            
+    
+        for(int=0;i <acotres.size();i++){
+            if(actores.get(i).empiezaPor(campoBusqueda.getText())){
+              cadenaResultados += listado.get(i).toString + "/n/n";
+             }
+    
+         resultado.setText(cadenaResultados):
+        }
+    }
+   */ 
+ /*
+
+ */
+    
+  
+      /*
+    private void campoBuscadorReleased(){
+     
+    }
+   */ 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoBusqueda;
     private javax.swing.JButton jButton1;

@@ -5,6 +5,7 @@
  */
 package poo.cine.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import poo.cine.Actor;
@@ -45,50 +46,15 @@ public class GestorBusquedaActor {
       gactor.run();
   }
   
-  
- /*
-    private void campoBuscadorReleased(){
-    resultado.setText("");
-    String cadenaResultados = "";
-            
-    
-        for(int=0;i <listado.size();i++){
-            if(listado.get(i).empiezaPor(campoBusqueda.getText())){
-              cadenaResultados += listado.get(i).toString + "/n/n";
-             }
-    
-         resultado.setText(cadenaResultados):
-        }
-    }
-   */ 
-  
-   /*
-    private List<Actor> resultado;
-    private void campoBuscadorReleased(){
-    resultado = null;
-    String cadenaResultados = "";
-            
-    
-        for(int=0;i <acotres.size();i++){
-            if(actores.get(i).empiezaPor(campoBusqueda.getText())){
-              cadenaResultados += listado.get(i).toString + "/n/n";
-             }
-    
-         resultado.setText(cadenaResultados):
-        }
-    }
-   */ 
- /*
-    private boolean empiezaPor(String apellido, String campo){
+      public boolean empiezaPor(String apellido, String campo){
         if(campo.isEmpty()|| campo.length()<apellido.length()){
         return false;
         }
-        for (i=0;i<campo.lenght();i++){
+        for (int i=0;i<campo.length();i++){
             if(campo.charAt(i)!= apellido.charAt(i)){
             return false;
             }
         }  
         return true;
     }
- */
-}
+ }
