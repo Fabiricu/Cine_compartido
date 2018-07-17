@@ -379,7 +379,7 @@ public class PantallaAdministracionPelicula extends javax.swing.JFrame {
         // realizamos un mockup de la llamada al caso de uso "Registrar Elenco"
         //personajes = gestor.obtenerElenco();
         //JOptionPane.showMessageDialog(null, "Se ha registrado el elenco: " + personajes.get(0));
-        gestor.gestorActor();
+        gestor.busqudaPersonaje();
     }//GEN-LAST:event_gestorActorActionPerformed
 
     private void radioSiDisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSiDisponibleActionPerformed

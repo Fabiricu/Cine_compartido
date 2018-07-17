@@ -28,6 +28,7 @@ import poo.cine.dao.PaisesDaoHibernateImpl;
 import poo.cine.dao.PeliculasDao;
 import poo.cine.dao.PeliculasDaoHibernateImpl;
 import poo.cine.ui.PantallaAdministracionPelicula;
+import poo.cine.controller.GestorBusquedaPersonaje;
 
 
 /**
@@ -37,11 +38,13 @@ import poo.cine.ui.PantallaAdministracionPelicula;
 public class GestorPelicula {
     
     private final Cine cine;
-    
+     
     private final GenerosDao generosDao;
     private final CalificacionesDao calificacionesDao;
     private final PaisesDao paisesDao;
     private final PeliculasDao peliculasDao;
+    
+    private final GestorBusquedaPersonaje gbpersonaje;
     
     
 
@@ -56,7 +59,7 @@ public class GestorPelicula {
         this.calificacionesDao = new CalificacionesDaoHibernateImpl(sessionFactory);
         this.paisesDao = new PaisesDaoHibernateImpl(sessionFactory);
         this.peliculasDao = new PeliculasDaoHibernateImpl(sessionFactory);
-       
+        this.gbpersonaje = new GestorBusquedaPersonaje(sessionFactory);
     }
     
     public void run () {
@@ -70,8 +73,8 @@ public class GestorPelicula {
         panel.setVisible(true);
     }
     
-    public void gestorActor(){
-     gactor.run();
+    public void busqudaPersonaje(){
+     gbpersonaje.run();
     }
     
     //public List<Personaje> obtenerElenco () {

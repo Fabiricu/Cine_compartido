@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package poo.cine.dao;
+import java.util.List;
 import poo.cine.Personaje;
 
 /**
@@ -12,7 +13,10 @@ import poo.cine.Personaje;
  */
 public interface PersonajeDao {
 
-    public Personaje buscarPorPersonaje (String nombreEnPelicula);
+    public Personaje buscarPorNombre (String nombreEnPelicula);
     
     public void guardar (Personaje personaje);
+    
+    public List<Personaje> obtenerTodos();
+
 }

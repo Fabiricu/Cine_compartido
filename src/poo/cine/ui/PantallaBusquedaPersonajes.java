@@ -5,16 +5,21 @@
  */
 package poo.cine.ui;
 
+import poo.cine.controller.GestorBusquedaPersonaje;
+
 /**
  *
  * @author Alumno
  */
-public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
+public class PantallaBusquedaPersonajes extends javax.swing.JFrame {
 
+    private GestorBusquedaPersonaje gbpersonaje;
     /**
      * Creates new form PantallaAdministracionPersonajes
      */
-    public PantallaAdministracionPersonajes() {
+    public PantallaBusquedaPersonajes(GestorBusquedaPersonaje gbpersonaje) {
+        this.gbpersonaje=gbpersonaje;
+        
         initComponents();
     }
 
@@ -32,7 +37,7 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        campoBusqueda = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
@@ -56,6 +61,12 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
 
         jButton2.setText("Aceptar");
 
+        campoBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoBusquedaActionPerformed(evt);
+            }
+        });
+
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
@@ -63,6 +74,11 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
         jButton3.setText("Salir");
 
         jButton4.setText("Busqueda");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                busquedaPersonaje(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,14 +92,13 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(jButton1)
                                 .addGap(26, 26, 26)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)
                                 .addGap(15, 15, 15)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                                .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
@@ -100,7 +115,7 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,6 +127,8 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        campoBusqueda.getAccessibleContext().setAccessibleName("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,6 +136,15 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void busquedaPersonaje(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedaPersonaje
+      gbpersonaje.buscarPersonajePorNombre(campoBusqueda.getText());
+        // TODO add your handling code here:
+    }//GEN-LAST:event_busquedaPersonaje
+
+    private void campoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoBusquedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,25 +163,27 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaAdministracionPersonajes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaPersonajes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaAdministracionPersonajes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaPersonajes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaAdministracionPersonajes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaPersonajes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaAdministracionPersonajes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaPersonajes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaAdministracionPersonajes().setVisible(true);
+                new PantallaBusquedaPersonajes().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campoBusqueda;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -165,6 +193,5 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

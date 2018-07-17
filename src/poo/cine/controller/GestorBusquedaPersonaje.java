@@ -7,7 +7,10 @@ package poo.cine.controller;
 
 import org.hibernate.SessionFactory;
 import poo.cine.Personaje;
-import poo.cine.ui.PantallaAdministracionPersonajes;
+import poo.cine.ui.PantallaBusquedaPersonajes;
+import poo.cine.controller.GestorPersonaje;
+import poo.cine.dao.PersonajeDao;
+import poo.cine.dao.PersonajeDaoHibernateImpl;
 
 /**
  *
@@ -15,17 +18,21 @@ import poo.cine.ui.PantallaAdministracionPersonajes;
  */
 public class GestorBusquedaPersonaje {
     
+    private  PersonajeDao personajeDao;
+
+    
      public GestorBusquedaPersonaje(SessionFactory sessionFactory) {
                
         // creamos las instancias de los objetos de acceso a datos
-        this.personajeDao = new ActorDaoHibernateImpl(sessionFactory);
+        this.personajeDao = new PersonajeDaoHibernateImpl(sessionFactory);
+        
 
     }
     
     public void run () {
                         
         // creamos una instancia del formulario y lo mostramos
-        PantallaAdministracionPersonajes panelpersonajes = new PantallaAdministarcionPersonajes(this);
+        PantallaBusquedaPersonajes panelpersonajes = new PantallaBusquedaPersonajes(this);
         panelpersonajes.setVisible(true);
     }
     

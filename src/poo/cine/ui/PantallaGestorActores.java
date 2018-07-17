@@ -17,14 +17,14 @@ import poo.cine.Actor;
  *
  * @author Alumno
  */
-public class PantallaAdministracionActores2 extends javax.swing.JFrame {
+public class PantallaGestorActores extends javax.swing.JFrame {
 
     /**
      * Creates new form PantallaAdministracionActores2
      */
     private final GestorActor gestor;
     
-    public PantallaAdministracionActores2(GestorActor gestor) {
+    public PantallaGestorActores(GestorActor gestor) {
         this.gestor = gestor;
     
         initComponents();
